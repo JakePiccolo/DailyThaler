@@ -22,7 +22,7 @@ def getthaler(soup, topn):
             when = data[0].a.find_next_sibling().text
             url = data[0].a
             url = url['href']
-            wlist.append(what + ', ' + when + ', ' + 'https://runescape.wiki' + url)
+            wlist.append(what + ', ' + when + '\n' + 'https://runescape.wiki' + url)
             lim = lim + 1
             if lim > topn: break 
         except IndexError:pass
@@ -43,9 +43,8 @@ async def quests(ctx):
     try:
         embed = discord.Embed(title = "Thaler Minigames", 
         description = "These are the next ten Minigames:", 
-        color = discord.Color.red(),
-        icon_url = 'https://static.wikia.nocookie.net/runescape2/images/b/b1/Minigame_Spotlight_update_post_header.jpg/revision/latest/scale-to-width-down/629?cb=20150518110749'
-        )
+        color = discord.Color.red())
+        embed.set_thumbnail(url = "https://static.wikia.nocookie.net/runescape2/images/2/26/Stanley_Limelight_chathead.png/revision/latest/scale-to-width-down/72?cb=20150518185301")
         #await ctx.send('{0}, Here are the next ten Thaler Minigames:'.format(author.mention))
         questlist = []
         for quest in getthaler(soup, topn = 10):
