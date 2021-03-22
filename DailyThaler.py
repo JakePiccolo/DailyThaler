@@ -41,20 +41,17 @@ async def quests(ctx):
     res = requests.get(URL).text
     soup = BeautifulSoup(res,'lxml')
     try:
-        embed = discord.Embed(title = "Thaler Minigames", 
-        description = "These are the next ten Minigames:", 
-        color = discord.Color.red())
+        embed = discord.Embed(title = "Minigame Spotlight", 
+        description = "Behold, another to bask in the glory of the Spotlight! These are the next ten Spotlight minigames:", 
+        color = discord.Color.red(),
+        url = "https://runescape.wiki/w/Update:Minigame_Spotlight")
         embed.set_thumbnail(url = "https://static.wikia.nocookie.net/runescape2/images/2/26/Stanley_Limelight_chathead.png/revision/latest/scale-to-width-down/72?cb=20150518185301")
-        #await ctx.send('{0}, Here are the next ten Thaler Minigames:'.format(author.mention))
         questlist = []
         for quest in getthaler(soup, topn = 10):
             questlist.append(quest)
-        #await ctx.send('\n'.join(questlist))
         embed.add_field(name = "Minigame List", value = '\n'.join(questlist), inline = False )
-
         upd = getupdate(soup)
         embed.add_field(name = "Updates in ", value = upd, inline = True)
-        #await ctx.send('Updates in '+ upd)
         await ctx.send(embed = embed)
     except Exception as err: 
         await ctx.send('Sorry that did not work {0}. Here is the issue: {1}'.format(author.mention, err))
