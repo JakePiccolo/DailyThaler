@@ -41,7 +41,7 @@ async def quests(ctx):
     res = requests.get(URL).text
     soup = BeautifulSoup(res,'lxml')
     try:
-        await ctx.send('{0}, Here are the last ten Thaler Minigames:'.format(author.mention))
+        await ctx.send('{0}, Here are the next ten Thaler Minigames:'.format(author.mention))
         questlist = []
         for quest in getthaler(soup, topn = 10):
             questlist.append(quest)
