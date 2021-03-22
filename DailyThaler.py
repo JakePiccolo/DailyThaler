@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import discord # Discord API
 from discord.ext import commands
 
-TOKEN = 'insert token here'
+TOKEN = 'insert token'
 GUILD = 'BoizBoizBoiz'
 
 # Create dice bot and register commands
