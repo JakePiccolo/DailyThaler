@@ -34,7 +34,7 @@ def getupdate(soup):
     return trs[0].text
 
 
-@bot.command(name = 'qs', description = 'Pulls Daily Thaler quests')
+@bot.command(name = 'dt', description = 'Pulls Daily Thaler quests')
 async def quests(ctx):
     author = ctx.message.author
     URL = "https://runescape.wiki/w/Thaler"
@@ -51,7 +51,7 @@ async def quests(ctx):
         for quest in getthaler(soup, topn = 10):
             questlist.append(quest)
         #await ctx.send('\n'.join(questlist))
-        embed.add_field(name = "Quest List", value = '\n'.join(questlist), inline = False )
+        embed.add_field(name = "Minigame List", value = '\n'.join(questlist), inline = False )
 
         upd = getupdate(soup)
         embed.add_field(name = "Updates in ", value = upd, inline = True)
